@@ -4,25 +4,23 @@ import 'package:know_our_school/ViewModel/view_model.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MultiProvider(
-    providers: [
-        ChangeNotifierProvider(create: (_) => SchoolProvider()),
-      ],
-    child: const MyApp()));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'know our school',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return ChangeNotifierProvider(
+      create: (_) => SchoolProvider(),
+      child: MaterialApp(
+        title: 'Know Our School',
+        theme: ThemeData(
+          primarySwatch: Colors.teal,
+        ),
+        home: const SchoolInfo(),
       ),
-      home: SchoolInfo(),
     );
   }
 }
